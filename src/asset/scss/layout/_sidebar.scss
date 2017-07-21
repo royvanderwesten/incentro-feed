@@ -26,6 +26,33 @@
     background-size: cover;
     border-top: 0.5px solid #d9d9d9;
   }
+
+  &--preselect{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding-top: 12%;
+    width: $sidebar-width;
+    height: 100%;
+    background-color: #f3f3f3;
+    position: absolute;
+    z-index: 200;
+
+    h3{
+      text-align: center;
+      color: $color-primary;
+      font-weight: normal;
+    }
+
+    img{
+      width: 70%;
+      margin: 4rem;
+      text-align: center;
+      display: block;
+      opacity: 0.1 !important;
+    }
+  }
+
 }
 
 .feedblock {
