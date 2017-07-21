@@ -24,6 +24,8 @@ export class SidebarComponent {
         service.getDetails({placeId: details.placeId}, (place) => {
             this.renderDetails(place);
         });
+
+        $('.app-sidebar--preselect').hide();
     }
 
     /**
@@ -71,7 +73,6 @@ export class SidebarComponent {
                 appid: 'd22e7a1fe0eebcb891e9a010de7c1d0f'
             })
             .done(response => {
-                console.log(response);
                 block.html(`
                     <span class="temperature">${parseFloat(response.main.temp-273.15).toFixed(1)}&deg;</span>
                     <p>Luchtvochtigheid: ${response.main.humidity}%</p>
@@ -87,17 +88,16 @@ export class SidebarComponent {
      * Render the news block.
      */
     renderNews(locationId) {
-        let block = this.$sidebar.find('.feedblock--news').find('.widget-frame'),
-            f = '<iframe src="http://m.dichtbij.nl/widget/artikel/\' + locationId + \'?showLeadText=False&showPhoto=True&height=400" height="300"></iframe>',
-            frame = $('<iframe src="http://m.dichtbij.nl/widget/artikel/' + locationId + '?showLeadText=False&showPhoto=True&height=300" height="300"></iframe>');
+        let block = this.$sidebar.find('.feedblock--news'),
+            frame = block.find('.widget-frame'),
+            iFrame = $('<iframe src="http://m.dichtbij.nl/widget/artikel/' + locationId + '?showLeadText=False&showPhoto=True&height=300" height="300"></iframe>');
 
-        block.html(frame);
+        block.addClass('feedblock--loading');
 
-
-        // setTimeout(() => {
-        //     block.removeClass('feedblock--loading').html('<iframe src="http://m.dichtbij.nl/widget/artikel/1?showLeadText=False&showPhoto=True&height=400" height="300"></iframe>');
-        // }, 300);
-
+        setTimeout(() => {
+            block.removeClass('feedblock--loading');
+            frame.html(iFrame);
+        }, 300);
     }
 
 }
