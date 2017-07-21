@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="../asset/css/site.css">
 </head>
 <body>
-    {% block bodyContent %}bodycontent{% endblock %}
+	<div class="app-wrapper">
+		<main class="app-main">
+			{% block bodyContent %}bodycontent{% endblock %}
+		</main>
+	</div>
     <script src="../asset/javascript/site.js"></script>
 </body>
 </html>
