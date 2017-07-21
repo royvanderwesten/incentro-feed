@@ -13,11 +13,10 @@
     <link rel="stylesheet" href="../asset/css/site.css">
 </head>
 <body>
-	<div class="app-wrapper">
-		<main class="app-main">
-			{% block bodyContent %}bodycontent{% endblock %}
-		</main>
-	</div>
+	<main class="app-main">
+		{% block bodyContent %}bodycontent{% endblock %}
+	</main>
     <script src="../asset/javascript/site.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?&callback=loadMap"></script>
 </body>
 </html>

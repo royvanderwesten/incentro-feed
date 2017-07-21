@@ -1,2 +1,9 @@
 @import "sidebar";
 @import "maps";
+
+body,
+html,
+.app-main,
+.app-maps {
+  height: 100%;
+}
