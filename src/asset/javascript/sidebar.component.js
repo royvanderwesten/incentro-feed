@@ -1,17 +1,33 @@
 import $ from 'jquery';
-import { LOCATIONS } from './site';
+import {LOCATIONS} from './site';
 
 export class SidebarComponent {
 
+    constructor(map) {
+        this.map = map;
+    }
+
     /**
-     * Load data for a specific location by its key.
+     * Load places data for a specific location.
      *
      * @param {string} key
      */
-    static load(key) {
-        let element = document.querySelector('.app-sidebar');
+    load(key) {
+        //let element = document.querySelector('.app-sidebar');
+        let service = new google.maps.places.PlacesService(this.map);
 
-        console.log('FETCH', LOCATIONS[key]);
+        service.getDetails({
+            placeId: LOCATIONS[key].placeId
+        }, (place, status) => {
+            console.log(place, status);
+        });
+    }
+
+    /**
+     * Render the place details.
+     */
+    renderDetails() {
+
     }
 
 }

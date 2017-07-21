@@ -5,8 +5,7 @@ import {SidebarComponent} from './sidebar.component';
 export class MapsComponent {
 
     constructor() {
-        this.element = document.querySelector('.app-maps');
-        this.bounds  = new google.maps.LatLngBounds();
+        this.bounds = new google.maps.LatLngBounds();
         this.markerIcon = {
             url: '/asset/image/marker.png',
             scaledSize: new google.maps.Size(46, 66),
@@ -21,13 +20,14 @@ export class MapsComponent {
     load() {
         this.createMap();
         this.createMarkers();
+        this.sidebar = new SidebarComponent(this.map);
     }
 
     /**
      * Create the map.
      */
     createMap() {
-        this.map = new google.maps.Map(this.element, {
+        this.map = new google.maps.Map(document.querySelector('.app-maps'), {
             zoom: 10,
             center: LOCATIONS.mt.latLng
         });
@@ -65,7 +65,7 @@ export class MapsComponent {
             });
 
         marker.addListener('click', () => {
-            SidebarComponent.load(key);
+            this.sidebar.load(key);
         });
 
         this.bounds.extend(
