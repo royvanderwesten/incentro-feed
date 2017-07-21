@@ -1,0 +1,17 @@
+.app-sidebar{
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  width: $sidebar-width;
+  position: absolute;
+  z-index: 100;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
+}
+
+.app-main{
+  padding-left: $sidebar-width;
+  position: relative;
+}
