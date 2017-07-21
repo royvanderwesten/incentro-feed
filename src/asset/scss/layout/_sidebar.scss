@@ -124,14 +124,15 @@
 .feedblock--news {
 
   .widget-frame {
-    margin-top: -45px;
-    margin-left: -1px;
-
     overflow: hidden;
+    border-top: 1px solid #EEE;
+    border-left: 1px solid #EEE;
   }
   iframe {
     width: calc(100% + 18px);
     border: 0;
+    margin-top: -45px;
+    margin-left: -1px;
   }
   &:after {
     background-image: url('../../asset/image/newspaper.svg');
