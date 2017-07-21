@@ -97,7 +97,7 @@ export class SidebarComponent {
         setTimeout(() => {
             block.removeClass('feedblock--loading');
             frame.html(iFrame);
-        }, 300);
+        }, 400);
     }
 
 }
