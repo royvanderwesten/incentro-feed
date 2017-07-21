@@ -7,12 +7,81 @@
   position: absolute;
   z-index: 100;
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
+  overflow-y: scroll;
 
-  h1{
-    color: $color-primary;
-    padding: 2rem;
+    &__location-image{
+      width: 100%;
+      height: 250px;
+      background-color: red;
+      overflow: hidden;
+
+      img{
+        height: 100%;
+      }
+    }
+
+    h1{
+      color: $color-primary;
+      font-weight: normal;
+      display: inline-block;
+      padding: 2rem;
+    }
+
+
+}
+
+.feedblock{
+  right: 0;
+  left: 0;
+  padding: 2rem 2rem;
+  display: block;
+
+  h4, h6{
     font-weight: normal;
   }
+
+  span.icon{
+    height: 80px;
+    width: 80px;
+    display: block;
+    float: right;
+    top: 0;
+    right: 0;
+  }
+
+
+  &__intro{
+
+
+
+    span.title{
+      color: #cccccc;
+      font-family: $font-family-base;
+      font-size: $font-size-sm;
+
+      img{
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  &__content{
+    background-color: pink;
+
+    h4{
+      font-size: 1rem;
+    }
+
+    span{
+      font-family: $font-family-base;
+      font-size: $font-size-base;
+      color: $color-base;
+    }
+
+  }
+
+
 }
 
 .app-main{
