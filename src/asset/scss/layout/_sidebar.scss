@@ -6,9 +6,13 @@
   width: $sidebar-width;
   position: absolute;
   z-index: 100;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
   box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.19);
+
+  h1{
+    color: $color-primary;
+    padding: 2rem;
+    font-weight: normal;
+  }
 }
 
 .app-main{
