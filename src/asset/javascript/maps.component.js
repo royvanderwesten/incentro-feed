@@ -34,12 +34,19 @@ export class MapsComponent {
                 continue;
             }
 
-            let details = LOCATIONS[key];
+            let details = LOCATIONS[key],
+                image = {
+                url: '/asset/image/marker.png',
+                scaledSize: new google.maps.Size(46, 66),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(23, 66)
+            };
 
             new google.maps.Marker({
                 position: details.latLng,
                 title: details.title,
-                map: this.map
+                map: this.map,
+                icon: image
             });
         }
     }
