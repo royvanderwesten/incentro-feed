@@ -21,46 +21,36 @@
     padding: 2rem;
   }
   &__image {
-    width: 100%;
-    height: auto;
+    height: 240px;
+    background: #DDD center no-repeat;
+    background-size: cover;
+    border-top: 0.5px solid #d9d9d9;
   }
 }
 
 .feedblock {
-  right: 0;
-  left: 0;
-  padding: 2rem 2rem;
+  position: relative;
   display: block;
+  min-height: 100px;
+  padding: 1.5rem 5rem 1.5rem 1.5rem;
   border-top: 0.5px solid #d9d9d9;
 
   h4, h6 {
     font-weight: normal;
   }
 
-  span.icon {
-    height: 60px;
-    width: 60px;
-    display: block;
-    float: right;
-    top: 0;
-    right: 0;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 54px;
+    height: 54px;
+    background: no-repeat top right;
+    background-size: contain;
   }
 
-  &__intro {
-    span.title {
-      color: #cccccc;
-      font-family: $font-family-base;
-      font-size: $font-size-sm;
-
-      img {
-        width: 80px;
-        height: 80px;
-      }
-    }
-  }
-
-  &__content {
-
+  &--content {
     h4 {
       font-size: 1.3rem;
     }
@@ -70,7 +60,64 @@
       font-family: $font-family-base;
       font-size: $font-size-sm;
     }
-
   }
 
+}
+
+// Intro
+.feedblock--intro {
+  p:first-child {
+    margin-bottom: 0.25rem;
+  }
+}
+
+// Weather
+.feedblock--weather {
+  .temperature {
+    font-size: 2rem;
+  }
+  &:after {
+    background-image: url('../../asset/image/cloudy.svg');
+  }
+}
+
+// News
+.feedblock--news:after {
+  background-image: url('../../asset/image/newspaper.svg');
+}
+
+// Traffic
+.feedblock--traffic:after {
+  background-image: url('../../asset/image/bus.svg');
+}
+
+// Sightseeing
+.feedblock--sightseeing:after {
+  background-image: url('../../asset/image/monument.svg');
+}
+
+// Loading state
+.feedblock--loading {
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+  }
+  &:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.5);
+  }
+  &:after {
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    margin-left: -1rem;
+    background: url('../../asset/image/spinner.gif') no-repeat center;
+    background-size: contain;
+  }
 }

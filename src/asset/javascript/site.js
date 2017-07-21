@@ -12,7 +12,7 @@ export const LOCATIONS = {
         placeId: 'ChIJ7fq05ds0xEcRXYbm85-aL8Y'
     },
     dh: {
-        title: 'Den Haag (SI & DS),',
+        title: 'Den Haag (SI & DS)',
         latLng: {lat: 52.0408476, lng: 4.354507399999989},
         placeId: 'ChIJ7fq05ds0xEcRXYbm85-aL8Y'
     },
