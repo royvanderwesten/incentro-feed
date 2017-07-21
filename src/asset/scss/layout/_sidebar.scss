@@ -15,10 +15,22 @@
   overflow-y: auto;
 
   &__title {
+    display: block;
     color: $color-primary;
     font-weight: normal;
-    display: inline-block;
-    padding: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 0;
+
+    &:after {
+      content: '';
+      float: right;
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      margin-left: 0.5rem;
+      background: url(../../asset/image/astronaut.svg) center no-repeat;
+      background-size: contain;
+    }
   }
   &__image {
     height: 240px;
@@ -109,8 +121,21 @@
 }
 
 // News
-.feedblock--news:after {
-  background-image: url('../../asset/image/newspaper.svg');
+.feedblock--news {
+
+  .widget-frame {
+    margin-top: -45px;
+    margin-left: -1px;
+
+    overflow: hidden;
+  }
+  iframe {
+    width: calc(100% + 18px);
+    border: 0;
+  }
+  &:after {
+    background-image: url('../../asset/image/newspaper.svg');
+  }
 }
 
 // Traffic

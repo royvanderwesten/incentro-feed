@@ -19,8 +19,9 @@ export class SidebarComponent {
 
         this.renderTitle(details.title);
         this.renderWeather(details.latLng);
+        this.renderNews(details.locationId);
 
-        service.getDetails({placeId: details.placeId}, (place, status) => {
+        service.getDetails({placeId: details.placeId}, (place) => {
             this.renderDetails(place);
         });
     }
@@ -80,6 +81,23 @@ export class SidebarComponent {
                 block.removeClass('feedblock--loading');
             });
         }, 300);
+    }
+
+    /**
+     * Render the news block.
+     */
+    renderNews(locationId) {
+        let block = this.$sidebar.find('.feedblock--news').find('.widget-frame'),
+            f = '<iframe src="http://m.dichtbij.nl/widget/artikel/\' + locationId + \'?showLeadText=False&showPhoto=True&height=400" height="300"></iframe>',
+            frame = $('<iframe src="http://m.dichtbij.nl/widget/artikel/' + locationId + '?showLeadText=False&showPhoto=True&height=300" height="300"></iframe>');
+
+        block.html(frame);
+
+
+        // setTimeout(() => {
+        //     block.removeClass('feedblock--loading').html('<iframe src="http://m.dichtbij.nl/widget/artikel/1?showLeadText=False&showPhoto=True&height=400" height="300"></iframe>');
+        // }, 300);
+
     }
 
 }
