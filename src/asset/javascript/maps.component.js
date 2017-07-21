@@ -11,15 +11,44 @@ export class MapsComponent {
      * Load Google Maps.
      */
     load() {
-        const map = new google.maps.Map(this.element, {
-            zoom: 4,
-            center: LOCATIONS.am
-        });
+        this.createMap();
+        this.addMarkers();
+    }
 
-        const marker = new google.maps.Marker({
-            map: map,
-            position: LOCATIONS.am
+    /**
+     * Create the map.
+     */
+    createMap() {
+        this.map = new google.maps.Map(this.element, {
+            zoom: 4,
+            center: LOCATIONS.am.latLng
         });
+    }
+
+    /**
+     * Add markers.
+     */
+    addMarkers() {
+        for (let key in LOCATIONS) {
+            if ( ! LOCATIONS.hasOwnProperty(key)) {
+                continue;
+            }
+
+            let details = LOCATIONS[key],
+                image = {
+                url: '/asset/image/marker.png',
+                scaledSize: new google.maps.Size(46, 66),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(23, 66)
+            };
+
+            new google.maps.Marker({
+                position: details.latLng,
+                title: details.title,
+                map: this.map,
+                icon: image
+            });
+        }
     }
 
 }
