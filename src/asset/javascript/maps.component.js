@@ -1,10 +1,18 @@
 import $ from 'jquery';
-import { LOCATIONS } from './site';
+import {LOCATIONS} from './site';
+import {SidebarComponent} from './sidebar.component';
 
 export class MapsComponent {
 
     constructor() {
         this.element = document.querySelector('.app-maps');
+        this.bounds  = new google.maps.LatLngBounds();
+        this.markerIcon = {
+            url: '/asset/image/marker.png',
+            scaledSize: new google.maps.Size(46, 66),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(23, 66)
+        };
     }
 
     /**
@@ -12,7 +20,7 @@ export class MapsComponent {
      */
     load() {
         this.createMap();
-        this.addMarkers();
+        this.createMarkers();
     }
 
     /**
@@ -20,35 +28,49 @@ export class MapsComponent {
      */
     createMap() {
         this.map = new google.maps.Map(this.element, {
-            zoom: 4,
-            center: LOCATIONS.am.latLng
+            zoom: 10,
+            center: LOCATIONS.mt.latLng
         });
     }
 
     /**
-     * Add markers.
+     * Create all markers.
      */
-    addMarkers() {
+    createMarkers() {
         for (let key in LOCATIONS) {
-            if ( ! LOCATIONS.hasOwnProperty(key)) {
+            if (!LOCATIONS.hasOwnProperty(key)) {
                 continue;
             }
+            this.addMarker(key);
+        }
 
-            let details = LOCATIONS[key],
-                image = {
-                url: '/asset/image/marker.png',
-                scaledSize: new google.maps.Size(46, 66),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(23, 66)
-            };
+        this.map.setCenter(
+            this.bounds.getCenter()
+        );
+    }
 
-            new google.maps.Marker({
+    /**
+     * Add a single marker to the map.
+     *
+     * @param {string} key
+     */
+    addMarker(key) {
+        let details = LOCATIONS[key],
+            marker = new google.maps.Marker({
+                map: this.map,
                 position: details.latLng,
                 title: details.title,
-                map: this.map,
-                icon: image
+                icon: this.markerIcon,
+                animation: google.maps.Animation.DROP,
             });
-        }
+
+        marker.addListener('click', () => {
+            SidebarComponent.load(key);
+        });
+
+        this.bounds.extend(
+            new google.maps.LatLng(details.latLng.lat, details.latLng.lng)
+        );
     }
 
 }

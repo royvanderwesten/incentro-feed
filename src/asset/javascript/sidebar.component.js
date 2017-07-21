@@ -3,12 +3,15 @@ import { LOCATIONS } from './site';
 
 export class SidebarComponent {
 
-    constructor() {
-        this.element = document.querySelector('.app-sidebar');
-    }
+    /**
+     * Load data for a specific location by its key.
+     *
+     * @param {string} key
+     */
+    static load(key) {
+        let element = document.querySelector('.app-sidebar');
 
-    loadData(location) {
-
+        console.log('FETCH', LOCATIONS[key]);
     }
 
 }
